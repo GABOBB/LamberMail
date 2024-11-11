@@ -5,6 +5,7 @@
 //#include "LogIn.h"
 #include "register.h"
 #include <QApplication>
+//#include "mainwindow.h"
 
 int main(int argc, char *argv[])
 {
