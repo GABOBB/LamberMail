@@ -8,11 +8,17 @@
 #include "ui_Register_UI.h"
 
 
-Register::Register(QWidget *parent) :
+Register::Register(QWidget *parent, Socket *socket) :
     QMainWindow(parent), ui(new Ui::Regiter_UI) {
     ui->setupUi(this);
+    this->socket = socket;
+    connect(ui->pushButton_2, &QPushButton::clicked, this, &Register::registerData);
 }
 
 Register::~Register() {
     delete ui;
+}
+
+void Register::registerData() {
+    socket->sendMessageToServer(ui->lineEdit->text().toStdString());
 }
