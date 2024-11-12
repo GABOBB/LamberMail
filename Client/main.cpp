@@ -26,6 +26,7 @@ using namespace std;
 
 int main(int argc, char *argv[]){
     Socket sock;
+
     QApplication a(argc, argv);
     Register w = Register(nullptr, &sock);
     w.show();
@@ -34,7 +35,5 @@ int main(int argc, char *argv[]){
     std::string longMessage = "Mensaje de Prueba para encriptacion";
     std::pair<std::vector<unsigned char>, std::vector<int>> result =enc.encrypt(longMessage);
     enc.decrypt(result.first, result.second);
-
-
     return a.exec();
 }
