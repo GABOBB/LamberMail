@@ -7,6 +7,7 @@
 
 
 std::pair<std::vector<unsigned char>, std::vector<int>> Encription::encrypt(std::string mensaje) {
+    srand(static_cast<unsigned>(time(0)));
     std::vector<unsigned char> message(mensaje.begin(), mensaje.end());
 
     // Genera una clave AES de 16 bytes para el cifrado
