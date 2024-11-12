@@ -6,7 +6,7 @@
 #include <iostream>
 #include <sys/socket.h>
 #include <netdb.h>
-#include <string.h>
+#include <cstring>
 #include <string>
 #include <unistd.h>
 #include <arpa/inet.h>
@@ -67,8 +67,12 @@ int main(int argc, char *argv[]){
 
     char buf[4096];
     while(true) {
-        memset(buf, 0, 4096);
-        int bytesR = recv(socket_cliente, buf, 4096, 0);
+
+        //memset(buf, 0, 4096);
+
+        int bytesR= recv(socket_cliente, buf, 4096, 0);
+
+
         if(bytesR == -1) {
             cerr<<"recv fail"<<endl;
             break;
@@ -77,14 +81,12 @@ int main(int argc, char *argv[]){
             cout<<"el cliente se desconecto"<<endl;
             break;
         }
-        cout<<"si"<<endl;
-        //for(int i = 0; i < bytesR; i++) {cout<<buf[i]<<endl;}
-        cout<< string(buf,bytesR+1) <<endl;
+        std::string string(buf,bytesR);
+        cout<< "recived "<<bytesR<<" bytes: " <<endl;
 
-        send(socket_cliente, buf, bytesR+1, 0);
+        send(socket_cliente, buf, bytesR, 0);
     }
 
     close(socket_cliente);
-    //std::cout << "Server xdxd" << std::endl;
     return 0;
 }
