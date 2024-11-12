@@ -104,7 +104,13 @@ int main(int argc, char *argv[]) {
                     } else {
                         // Imprimir datos recibidos
                         std::string data(buf, bytesR);
-                        cout << "Recibido " << bytesR << " bytes: " << i << endl;
+
+                        cout << "Recibido " << bytesR << " bytes: ";
+                        for (int j=0; j<bytesR-1; j++) {
+                            std::cout << buf[j];
+                        }
+                        std::cout << endl;
+
 
                         // Enviar datos de vuelta al cliente
                         send(i, buf, bytesR, 0);

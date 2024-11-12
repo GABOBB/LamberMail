@@ -8,6 +8,7 @@
 #include <QMainWindow>
 
 #include "ui_Register_UI.h"
+#include "Socket.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -18,8 +19,14 @@ class Register : public QMainWindow {
 Q_OBJECT
 
 public:
+    Socket* socket;
     explicit Register(QWidget *parent = nullptr);
+
+Register(QWidget *parent, Socket *socket);
+
     ~Register() override;
+
+void registerData();
 
 private:
     Ui::Regiter_UI *ui;
