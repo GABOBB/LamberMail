@@ -3,9 +3,9 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
-  <component name="CMakePresetLoader"><![CDATA[{
-  "useNewFormat": true
-}]]></component>
+  <component name="CMakePresetLoader">{
+  &quot;useNewFormat&quot;: true
+}</component>
   <component name="CMakeProjectFlavorService">
     <option name="flavorId" value="CMakePlainProjectFlavor" />
   </component>
@@ -24,22 +24,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce4fed38-ca03-4fcc-ac3b-8ab60d60eb22" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Server/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Server/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/.name" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CMakeLists.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LogIn.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LogIn.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LogIn_UI.ui" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Register_UI.ui" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../main.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../register.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../register.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ui_LogIn_UI.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ui_Register_UI.h" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Server/.idea/editor.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Server/AES.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Server/AES.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Server/RSA.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Server/RSA.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,9 +50,9 @@
     <option name="minorVersion" value="2.2" />
     <option name="productBranch" value="Classic" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 6
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2oiffP74O8TIOFnXMVbOecEtnOK" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -76,18 +67,17 @@
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "sockets",
+    "git-widget-placeholder": "encriptacion",
     "last_opened_file_path": "/home/yerik/Desktop/LamberMail/Client",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Cliente" type="CMakeRunConfiguration" factoryName="Application" singleton="false" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Cliente" TARGET_NAME="Cliente" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Cliente" RUN_TARGET_NAME="Cliente">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -103,6 +93,9 @@
       <option name="presentableId" value="Default" />
       <updated>1731357419989</updated>
       <workItem from="1731357421025" duration="52000" />
+      <workItem from="1731364014667" duration="146000" />
+      <workItem from="1731364343913" duration="6000" />
+      <workItem from="1731366654364" duration="529000" />
     </task>
     <servers />
   </component>
