@@ -232,10 +232,10 @@ int main() {
         conn->setSchema("base_3");
 
         // Ejemplo de agregar un usuario nuevo
-        std::string nuevoCorreo = "nuevo_usuario@dominio.com";
-        std::string nuevaContrasena = "nueva_contrasena_encriptada";
-        std::string nuevaLlaveEncriptacion = "llave_encriptacion_nueva";
-        agregarUsuario(conn, nuevoCorreo, nuevaContrasena, nuevaLlaveEncriptacion);
+        //std::string nuevoCorreo = "nuevo_usuario@dominio.com";
+        //std::string nuevaContrasena = "nueva_contrasena_encriptada";
+        //std::string nuevaLlaveEncriptacion = "llave_encriptacion_nueva";
+        //agregarUsuario(conn, nuevoCorreo, nuevaContrasena, nuevaLlaveEncriptacion);
 
         // Ejemplo de agregar un correo para el usuario identificado por su correo
         std::string correo_usuario = "nuevo_usuario@dominio.com";  // Buscar usuario por correo
@@ -245,7 +245,7 @@ int main() {
         agregarCorreo(conn, correo_usuario, textoCorreo, llaveEncriptacionCorreo, correoRemitente);
 
         // Mostrar correos recibidos para un usuario
-        mostrarCorreosRecibidos(conn, correo_usuario);
+        //mostrarCorreosRecibidos(conn, correo_usuario);
 
         delete conn;
 
