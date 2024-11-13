@@ -226,7 +226,7 @@ int main() {
 
         // Conectar al servidor MySQL
         driver = sql::mysql::get_mysql_driver_instance();
-        conn = driver->connect("tcp://127.0.0.1:3306", "usuario", "contraseña");
+        conn = driver->connect("tcp://127.0.0.1:3306", "root", "tu_contraseña");
 
         // Seleccionar la base de datos
         conn->setSchema("base_3");
