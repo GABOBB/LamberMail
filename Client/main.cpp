@@ -3,7 +3,7 @@
 //
 
 
-#include "Encription.h"
+
 #include <QApplication>
 #include <iostream>
 #include <sys/socket.h>
@@ -14,6 +14,7 @@
 #include <arpa/inet.h>
 #include <thread>
 
+#include "LogIn.h"
 #include "Socket.h"
 
 using namespace std;
@@ -29,12 +30,10 @@ int main(int argc, char *argv[]){
     Socket sock;
 
     QApplication a(argc, argv);
-    Register w = Register(nullptr, &sock);
+    LogIn_UI w = LogIn_UI(nullptr, &sock);
     w.show();
-    Encription enc;
-    // Mensaje de prueba largo
-    std::string longMessage = "Mensaje de Prueba para encriptacion";
-    std::pair<std::vector<unsigned char>, std::vector<int>> result =enc.encrypt(longMessage);
-    enc.decrypt(result.first, result.second);
+
+
+    //enc.decrypt(result.first, result.second);
     return a.exec();
 }
