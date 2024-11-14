@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.4.3, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.40, for Linux (x86_64)
 --
 -- Host: 127.0.0.1    Database: base_3
 -- ------------------------------------------------------
--- Server version	8.4.3
+-- Server version	8.0.40-0ubuntu0.24.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -32,7 +32,7 @@ CREATE TABLE `correos_recibidos` (
   PRIMARY KEY (`id`),
   KEY `correos_recibidos_ibfk_1` (`correo_id`),
   CONSTRAINT `correos_recibidos_ibfk_1` FOREIGN KEY (`correo_id`) REFERENCES `usuarios2` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `correos_recibidos` (
 
 LOCK TABLES `correos_recibidos` WRITE;
 /*!40000 ALTER TABLE `correos_recibidos` DISABLE KEYS */;
-INSERT INTO `correos_recibidos` VALUES (1,1,'Marc Guiu > Mbappe ','llave_encriptacion_correo','remitente@dominio.com','2024-11-12 23:48:55'),(2,1,'Quien soy?','llave_encriptacion_correo','remitente@dominio.com','2024-11-12 23:57:14'),(4,1,'Este es un mensaje nuevo','llave_encriptacion_mensaje','remitente@dominio.com','2024-11-13 00:30:24'),(6,5,'Este es un mensaje nuevo','llave_encriptacion_mensaje','remitente@dominio.com','2024-11-13 03:03:25');
+INSERT INTO `correos_recibidos` VALUES (1,1,'Marc Guiu > Mbappe ','llave_encriptacion_correo','remitente@dominio.com','2024-11-12 23:48:55'),(2,1,'Quien soy?','llave_encriptacion_correo','remitente@dominio.com','2024-11-12 23:57:14'),(4,1,'Este es un mensaje nuevo','llave_encriptacion_mensaje','remitente@dominio.com','2024-11-13 00:30:24'),(6,5,'Este es un mensaje nuevo','llave_encriptacion_mensaje','remitente@dominio.com','2024-11-13 03:03:25'),(7,6,'Este es un mensaje nuevo','llave_encriptacion_mensaje','remitente@dominio.com','2024-11-13 21:18:54');
 /*!40000 ALTER TABLE `correos_recibidos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -82,11 +82,11 @@ DROP TABLE IF EXISTS `usuarios2`;
 CREATE TABLE `usuarios2` (
   `id` int NOT NULL AUTO_INCREMENT,
   `correo` varchar(255) NOT NULL,
-  `contrasena` varchar(255) NOT NULL,
+  `contrasena` varbinary(255) DEFAULT NULL,
   `llave_encriptacion` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `correo` (`correo`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,7 +95,7 @@ CREATE TABLE `usuarios2` (
 
 LOCK TABLES `usuarios2` WRITE;
 /*!40000 ALTER TABLE `usuarios2` DISABLE KEYS */;
-INSERT INTO `usuarios2` VALUES (1,'usuario@dominio.com','contraseÃ±a_encriptada','llave_encriptacion_usuario'),(3,'usuario2@dominio.com','contraseÃ±a_encriptada','llave_encriptacion_usuario'),(5,'nuevo_usuario@dominio.com','nueva_contrasena_encriptada','llave_encriptacion_nueva');
+INSERT INTO `usuarios2` VALUES (1,'usuario@dominio.com',_binary 'contraseÃ±a_encriptada','llave_encriptacion_usuario'),(3,'usuario2@dominio.com',_binary 'contraseÃ±a_encriptada','llave_encriptacion_usuario'),(5,'nuevo_usuario@dominio.com',_binary 'nueva_contrasena_encriptada','llave_encriptacion_nueva'),(6,'Prueba@LamberMail.com',_binary 'nueva_contrasena_encriptada','llave_encriptacion_nueva'),(16,'Gabriel@LamberMail.com',_binary 'J*\íýrl\ä®k\çš\à~ŠT','1972,1759,2582,207,1188,1,2140,2202,1577,93,2375,712,2412,1188,3109,1421,');
 /*!40000 ALTER TABLE `usuarios2` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -108,4 +108,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-11-13 13:24:46
+-- Dump completed on 2024-11-13 19:15:41
