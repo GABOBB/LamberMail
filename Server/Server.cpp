@@ -82,9 +82,9 @@ int Server::startServer() {
                         std::cout << host << " conectado en el puerto: " << ntohs(client.sin_port) << std::endl;
                     }
                 } else {
-                    char buf[4096];
-                    memset(buf, 0, 4096);
-                    int bytesR = recv(i, buf, 4096, 0);
+                    char buf[16384];
+                    memset(buf, 0, 16384);
+                    int bytesR = recv(i, buf, 16384, 0);
 
                     if (bytesR <= 0) {
                         if (bytesR == 0) {
@@ -104,8 +104,11 @@ int Server::startServer() {
                         // Procesar el primer carácter del mensaje
                         char command = buf[0];
                         int caso=1;
-                        char user[4096]={};
-                        char password[4096]={};
+                        int k=0;
+                        int l=0;
+                        char user[16384]={};
+                        char password[16384]={};
+                        char key[16384]={};
                         std::string mensaje="";
                         switch (command) {
                             case 'R':
@@ -122,12 +125,26 @@ int Server::startServer() {
                                         }
 
                                     }else if(caso==2) {
-                                        int k=0;
-                                        password[k] = buf[j];
+
+                                        if(buf[j]==':') {
+                                            if(buf[j+1]!=':') {
+                                                caso=3;
+                                            }else {
+                                                password[k] = buf[j];
+                                                k++;
+                                            }
+                                        }else {
+                                            password[k] = buf[j];
+                                            k++;
+                                        }
+
+                                    }else if(caso==3) {
+                                        key[l] = buf[j];
+                                        l++;
 
                                     }
                                 }
-                                if(base.agregarUsuario(user, password,"xdxd")) {
+                                if(base.agregarUsuario(user, password,key)) {
                                     send(i, "Exito", 5, 0);
                                 }else {
                                     send(i, "Error", 5, 0);

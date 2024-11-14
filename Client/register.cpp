@@ -33,8 +33,7 @@ void Register::registerData() {
                     key += std::to_string(num)+",";
                 }
 
-                enc.decrypt(password,key);
-                //socket->sendMessageToServer("R:" + ui->lineEdit->text().toStdString() + ":" + password + ":" + key);
+                socket->sendMessageToServer("R:" + ui->lineEdit->text().toStdString() + ":" + password + ":" + key);
                 bool waiting = true;
                 while(waiting) {
                     if(socket->lastmsjRcvd=="") {
