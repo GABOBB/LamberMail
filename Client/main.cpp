@@ -20,6 +20,7 @@ using namespace std;
 //#include "LogIn.h"
 #include "register.h"
 //#include "mainwindow.h"
+//#include "mail.h"
 
 
 
