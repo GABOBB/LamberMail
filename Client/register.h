@@ -9,6 +9,8 @@
 
 #include "ui_Register_UI.h"
 #include "Socket.h"
+#include "Encription.h"
+
 
 
 QT_BEGIN_NAMESPACE

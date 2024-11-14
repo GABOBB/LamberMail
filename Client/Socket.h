@@ -24,6 +24,7 @@ public:
     std::queue<std::string> messageQueue;
     std::mutex queueMutex;
     std::condition_variable queueCondition;
+    std::string lastmsjRcvd="";
 
     Socket();
 

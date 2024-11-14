@@ -49,11 +49,19 @@ std::pair<std::vector<unsigned char>, std::vector<int>> Encription::encrypt(std:
     return std::make_pair(encryptedMessage, encryptedKey);
 }
 
-std::vector<unsigned char> Encription::decrypt(std::vector<unsigned char> mensaje, std::vector<int> llave) {
+std::vector<unsigned char> Encription::decrypt(std::string mensaje, std::string llave) {
+    // Crear un vector<unsigned char> y llenar con los caracteres de la cadena
+    std::vector<unsigned char> newMensaje(mensaje.begin(), mensaje.end());
+    std::vector<int> newKey;
+    std::istringstream iss(llave);
+    std::string token;
+    while (std::getline(iss, token, ',')) {
+        newKey.push_back(std::stoi(token));  // Convierte cada token a int y lo agrega al vector
+    }
     RSA rsa;
     // Descifra la clave AES usando RSA
     std::vector<unsigned char> decryptedKey;
-    for (auto byte : llave) {
+    for (auto byte : newKey) {
         decryptedKey.push_back(rsa.decrypt(byte));
     }
 
@@ -67,13 +75,10 @@ std::vector<unsigned char> Encription::decrypt(std::vector<unsigned char> mensaj
     AES aes(decryptedKey);
 
     // Descifra el mensaje con AES
-    std::vector<unsigned char> decryptedMessage = aes.decrypt(mensaje);
-    std::cout << "Mensaje descifrado (AES): ";
-    for (auto byte : decryptedMessage) {
-        // Imprime el byte como un carácter, pero asegúrate de tratarlo como unsigned char
-        std::cout << (char)byte;
-    }
-    std::cout << std::endl;
+    std::vector<unsigned char> decryptedMessage = aes.decrypt(newMensaje);
+
+    std::string finalMsj(decryptedMessage.begin(), decryptedMessage.end());
+    std::cout << finalMsj << std::endl;
 
     return decryptedMessage;
 }

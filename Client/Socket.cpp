@@ -66,6 +66,7 @@ void Socket::socketClientFunction() {
         if (bytesReceived > 0) {
             std::cout << "Servidor: " << std::string(buf, bytesReceived) << std::endl;
         }
+        lastmsjRcvd = std::string(buf, bytesReceived);
     }
 
     close(sock);
