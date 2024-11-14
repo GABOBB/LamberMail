@@ -82,3 +82,31 @@ std::vector<unsigned char> Encription::decrypt(std::string mensaje, std::string 
 
     return decryptedMessage;
 }
+
+bool Encription::compare(std::string intento, std::string llave, std::string original) {
+    std::vector<int> newKey;
+    std::istringstream iss(llave);
+    std::string token;
+    while (std::getline(iss, token, ',')) {
+        newKey.push_back(std::stoi(token));  // Convierte cada token a int y lo agrega al vector
+    }
+    RSA rsa;
+    // Descifra la clave AES usando RSA
+    std::vector<unsigned char> decryptedKey;
+    for (auto byte : newKey) {
+        decryptedKey.push_back(rsa.decrypt(byte));
+    }
+    AES aes(decryptedKey);
+    std::vector<unsigned char> message(intento.begin(), intento.end());
+    std::vector<unsigned char> encryptedMessage = aes.encrypt(message);
+    std::vector<char> charMessage = std::vector<char>(encryptedMessage.begin(), encryptedMessage.end());
+    std::string password(charMessage.begin(), charMessage.end());
+    std::vector<char> orchar(original.begin(), original.end());
+    std::string comparing(orchar.begin(), orchar.end());
+    std::cout << password + "::" + original << std::endl;
+    if (password==original) {
+        return true;
+    } else {
+        return false;
+    }
+}

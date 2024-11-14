@@ -86,7 +86,7 @@ CREATE TABLE `usuarios2` (
   `llave_encriptacion` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `correo` (`correo`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,7 +95,7 @@ CREATE TABLE `usuarios2` (
 
 LOCK TABLES `usuarios2` WRITE;
 /*!40000 ALTER TABLE `usuarios2` DISABLE KEYS */;
-INSERT INTO `usuarios2` VALUES (1,'usuario@dominio.com',_binary 'contrase√±a_encriptada','llave_encriptacion_usuario'),(3,'usuario2@dominio.com',_binary 'contrase√±a_encriptada','llave_encriptacion_usuario'),(5,'nuevo_usuario@dominio.com',_binary 'nueva_contrasena_encriptada','llave_encriptacion_nueva'),(6,'Prueba@LamberMail.com',_binary 'nueva_contrasena_encriptada','llave_encriptacion_nueva'),(16,'Gabriel@LamberMail.com',_binary 'J*\Ì˝rl\‰Æk\Áö\‡~äT','1972,1759,2582,207,1188,1,2140,2202,1577,93,2375,712,2412,1188,3109,1421,');
+INSERT INTO `usuarios2` VALUES (1,'usuario@dominio.com',_binary 'contrase√±a_encriptada','llave_encriptacion_usuario'),(3,'usuario2@dominio.com',_binary 'contrase√±a_encriptada','llave_encriptacion_usuario'),(5,'nuevo_usuario@dominio.com',_binary 'nueva_contrasena_encriptada','llave_encriptacion_nueva'),(6,'Prueba@LamberMail.com',_binary 'nueva_contrasena_encriptada','llave_encriptacion_nueva'),(17,'Yerik@LamberMail.com',_binary '\ÙFCR§lèmt\"M\·px','1586,642,1086,615,1802,331,3086,2160,1337,2310,2546,3199,2790,155,2546,1107,');
 /*!40000 ALTER TABLE `usuarios2` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -108,4 +108,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-11-13 19:15:41
+-- Dump completed on 2024-11-13 23:40:38

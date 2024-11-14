@@ -24,7 +24,7 @@ public:
     Socket* socket;
     explicit Register(QWidget *parent = nullptr);
 
-Register(QWidget *parent, Socket *socket);
+    Register(QWidget *parent, Socket *socket);
 
     ~Register() override;
 

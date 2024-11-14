@@ -7,6 +7,7 @@
 Server::Server() : listening(-1), max_fd(-1) {
     FD_ZERO(&master_set);
     startServer();
+
 }
 
 Server::~Server() {
@@ -17,10 +18,6 @@ Server::~Server() {
 
 int Server::startServer() {
     listening = socket(AF_INET, SOCK_STREAM, 0);
-    if (listening == -1) {
-        std::cerr << "Socket fail" << std::endl;
-        return -1;
-    }
 
     sockaddr_in address;
     address.sin_family = AF_INET;
@@ -110,6 +107,7 @@ int Server::startServer() {
                         char password[16384]={};
                         char key[16384]={};
                         std::string mensaje="";
+                        std::pair<std::string,std::string> login={"",""};
                         switch (command) {
                             case 'R':
                                 for (int j = 2; j < bytesR-1; j++) {
@@ -144,6 +142,9 @@ int Server::startServer() {
 
                                     }
                                 }
+                                for (size_t i = 0; i < k-1; ++i) {
+                                    mensaje += password[i];  // Añade cada carácter al string
+                                }
                                 if(base.agregarUsuario(user, password,key)) {
                                     send(i, "Exito", 5, 0);
                                 }else {
@@ -152,7 +153,17 @@ int Server::startServer() {
                             // Agregar el código para manejar el comando 'R'
                             break;
                             case 'L':
-                                std::cout << "Comando L recibido" << std::endl;
+                                for (int j = 2; j < bytesR-1; j++) {
+                                    if (caso==1) {
+                                        user[j-2]=buf[j];
+                                    }
+                                }
+                                login = base.obtenerCredencialesPorCorreo(user);
+                                mensaje= login.first+":"+login.second;
+                                send(i, mensaje.c_str(), mensaje.size(), 0);
+
+
+
                             // Agregar el código para manejar el comando 'L'
                             break;
                             case 'U':

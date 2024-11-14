@@ -25,6 +25,8 @@ public:
     void agregarCorreo(const std::string& correo_usuario, const std::string& texto, const std::string& llave_encriptacion, const std::string& correo_remitente);
     void mostrarCorreosRecibidos(const std::string& correo_usuario);
 
+    std::pair<std::string, std::string> obtenerCredencialesPorCorreo(const std::string &correo);
+
 private:
     // Puntero a la conexión SQL
     sql::Connection* conn;

@@ -39,7 +39,7 @@ void Socket::socketClientFunction() {
         return;
     }
 
-    char buf[4096];
+    char buf[16384];
 
     while (running) {  // Continuar mientras `running` sea true
         std::string messageToSend;
@@ -61,8 +61,8 @@ void Socket::socketClientFunction() {
         }
 
         // Recibir la respuesta del servidor
-        memset(buf, 0, 4096);
-        int bytesReceived = recv(sock, buf, 4096, 0);
+        memset(buf, 0, 16384);
+        int bytesReceived = recv(sock, buf, 16384, 0);
         if (bytesReceived > 0) {
             std::cout << "Servidor: " << std::string(buf, bytesReceived) << std::endl;
         }

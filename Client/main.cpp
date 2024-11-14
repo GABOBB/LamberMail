@@ -14,6 +14,7 @@
 #include <arpa/inet.h>
 #include <thread>
 
+#include "LogIn.h"
 #include "Socket.h"
 
 using namespace std;
@@ -28,7 +29,7 @@ int main(int argc, char *argv[]){
     Socket sock;
 
     QApplication a(argc, argv);
-    Register w = Register(nullptr, &sock);
+    LogIn_UI w = LogIn_UI(nullptr, &sock);
     w.show();
 
 

@@ -17,6 +17,8 @@ class Encription {
 public:
     std::pair<std::vector<unsigned char>, std::vector<int>> encrypt(std::string mensaje);
     std::vector<unsigned char> decrypt(std::string mensaje, std::string llave);
+
+    bool compare(std::string intento, std::string llave, std::string original);
 };
 
 

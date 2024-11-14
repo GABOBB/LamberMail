@@ -128,3 +128,36 @@ void Base::mostrarCorreosRecibidos(const std::string& correo_usuario) {
         std::cerr << "Error al mostrar correos recibidos: " << e.what() << std::endl;
     }
 }
+
+std::pair<std::string, std::string> Base::obtenerCredencialesPorCorreo(const std::string& correo) {
+    std::pair<std::string, std::string> credenciales= {" "," "};  // Para almacenar la contraseña y la clave
+    if (!conn) return credenciales;
+
+    try {
+
+        sql::PreparedStatement *pstmt = conn->prepareStatement(
+            "SELECT contrasena, llave_encriptacion FROM usuarios2 WHERE correo = ?"
+        );
+
+        pstmt->setString(1, correo);
+        sql::ResultSet *res = pstmt->executeQuery();
+        bool found = false;
+
+        while (res->next()) {
+            std::cout << "Contraseña: " << res->getString("contrasena") << std::endl;
+            std::cout << "Llave de Encriptación: " << res->getString("llave_encriptacion") << std::endl;
+            std::cout << "-----------------------------" << std::endl;
+            credenciales.first = res->getString("contrasena");  // Obtiene la contraseña
+            credenciales.second = res->getString("llave_encriptacion");      // Obtiene la clave
+            found = true;
+        }
+        if (!found) {
+            std::cout << "Usuario no encontrado con el correo especificado." << std::endl;
+        }
+
+    } catch (sql::SQLException &e) {
+        std::cerr << "Error al mostrar correos recibidos: " << e.what() << std::endl;
+    }
+
+    return credenciales;
+}
