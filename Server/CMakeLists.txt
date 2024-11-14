@@ -10,6 +10,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets Charts)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Charts)
 
+# Ruta de los encabezados de MySQL Connector (ajusta esta ruta)
+include_directories("/usr/include/mysql-cppconn/jdbc")
+
 # Agregar todos los archivos de código fuente automáticamente, excepto los generados por CMake
 file(GLOB_RECURSE SOURCE_FILES
         "${CMAKE_SOURCE_DIR}/*.cpp"
@@ -19,11 +22,11 @@ file(GLOB_RECURSE SOURCE_FILES
 # Excluir los directorios de CMake para evitar duplicaciones de 'main'
 list(FILTER SOURCE_FILES EXCLUDE REGEX "/(CMakeFiles|cmake-build-debug)/")
 
-
+# Declarar el ejecutable, ajustando según la versión de Qt
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(Servidor
             MANUAL_FINALIZATION
-            ${SOURCE_FILES}  # Cambié PROJECT_SOURCES por SOURCE_FILES
+            ${SOURCE_FILES}
     )
 else()
     if(ANDROID)
@@ -37,7 +40,9 @@ else()
     endif()
 endif()
 
+# Ruta de la biblioteca de MySQL Connector (ajusta esta ruta)
 target_link_libraries(Servidor PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Charts)
+target_link_libraries(Servidor PRIVATE "/usr/lib/x86_64-linux-gnu/libmysqlcppconn.so")
 
 if(${QT_VERSION} VERSION_LESS 6.1.0)
     set(BUNDLE_ID_OPTION MACOSX_BUNDLE_GUI_IDENTIFIER com.example.Servidor)
