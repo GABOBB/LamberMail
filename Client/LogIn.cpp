@@ -5,14 +5,16 @@
 // You may need to build the project (run Qt uic code generator) to get "ui_LogIn_UI.h" resolved
 
 #include "LogIn.h"
-#include "ui_LogIn_UI.h"
 
 
-LogIn_UI::LogIn_UI(QWidget *parent,Socket *socket) :
+
+LogIn_UI::LogIn_UI(QWidget *parent,Socket *socket,Usuario *usr) :
     QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
     this->socket=socket;
-    connect(ui->pushButton_2,&QPushButton::clicked, this ,&LogIn_UI::login);
+    this->usuario= usr;
+    connect(ui->pushButton_2,&QPushButton::clicked, this ,&LogIn_UI::mainwindowOpen);
+    connect(ui->pushButton_3,&QPushButton::clicked, this,&LogIn_UI::registerWindow);
 }
 
 LogIn_UI::~LogIn_UI() {
@@ -57,14 +59,37 @@ void LogIn_UI::login() {
                     Encription enc;
                     if(enc.compare(ui->lineEdit_2->text().toStdString(),key,password)) {
                         std::cout << "Inicio Exitoso" << std::endl;
+                        user=ui->lineEdit->text().toStdString();
+                        socket->lastmsjRcvd  = "";
+                        waiting=false;
                     }else {
                         std::cout << "Inicio Fallido" << std::endl;
+                        socket->lastmsjRcvd  = "";
+                        waiting=false;
                     }
-                    socket->lastmsjRcvd  = "";
-                    waiting=false;
+
                 }
             }
         }
+    }
+
+
+}
+
+void LogIn_UI::registerWindow() {
+    Register *r = new Register(nullptr,socket, usuario);
+    r->show();
+    this->close();
+}
+
+void LogIn_UI::mainwindowOpen() {
+    login();
+
+    if(user!="") {
+        usuario->setUsuario(user);
+        MainWindow *w = new MainWindow(nullptr,socket, usuario);
+        w->show();
+        this->close();
     }
 
 }

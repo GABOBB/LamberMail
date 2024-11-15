@@ -79,9 +79,9 @@ int Server::startServer() {
                         std::cout << host << " conectado en el puerto: " << ntohs(client.sin_port) << std::endl;
                     }
                 } else {
-                    char buf[16384];
-                    memset(buf, 0, 16384);
-                    int bytesR = recv(i, buf, 16384, 0);
+                    char buf[262144];
+                    memset(buf, 0, 262144);
+                    int bytesR = recv(i, buf, 262144, 0);
 
                     if (bytesR <= 0) {
                         if (bytesR == 0) {
@@ -103,11 +103,14 @@ int Server::startServer() {
                         int caso=1;
                         int k=0;
                         int l=0;
-                        char user[16384]={};
-                        char password[16384]={};
-                        char key[16384]={};
+                        int m=0;
+                        char user[262144]={};
+                        char password[262144]={};
+                        char key[262144]={};
+                        char user2[262144]={};
                         std::string mensaje="";
                         std::pair<std::string,std::string> login={"",""};
+                        std::vector<std::tuple<std::string,std::string,std::string>> mails = {};
                         switch (command) {
                             case 'R':
                                 for (int j = 2; j < bytesR-1; j++) {
@@ -161,17 +164,86 @@ int Server::startServer() {
                                 login = base.obtenerCredencialesPorCorreo(user);
                                 mensaje= login.first+":"+login.second;
                                 send(i, mensaje.c_str(), mensaje.size(), 0);
-
-
+                                send(i, "Exito", 5, 0);
 
                             // Agregar el código para manejar el comando 'L'
                             break;
                             case 'U':
-                                std::cout << "Comando U recibido" << std::endl;
+                                for (int j = 2; j < bytesR-1; j++) {
+                                    if (caso==1) {
+                                        user[j-2]=buf[j];
+                                    }
+                                }
+                                mails=base.mostrarCorreosRecibidos(user);
+                                if (!mails.empty()) {
+                                    for (auto item : mails) {
+                                        auto [text, key, autor] = item;
+                                        mensaje += text+":"+key+":"+autor;
+                                        send(i, mensaje.c_str(), mensaje.size(), 0);
+                                        mensaje="";
+                                        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+                                    }
+                                    send(i, "Exito", 5, 0);
+                                }else {
+                                    send(i, "Error", 5, 0);
+                                }
+
                             // Agregar el código para manejar el comando 'U'
                             break;
                             case 'S':
-                                std::cout << "Comando S recibido" << std::endl;
+                                for (int j = 2; j < bytesR-1; j++) {
+                                    if (caso==1) {
+                                        if(buf[j]==':') {
+                                            if(buf[j+1]!=':') {
+                                                caso=2;
+                                            }else {
+                                                user[j-2] = buf[j];
+                                            }
+                                        }else {
+                                            user[j-2] = buf[j];
+                                        }
+
+                                    }else if(caso==2) {
+
+                                        if(buf[j]==':') {
+                                            if(buf[j+1]!=':') {
+                                                caso=3;
+                                            }else {
+                                                password[k] = buf[j];
+                                                k++;
+                                            }
+                                        }else {
+                                            password[k] = buf[j];
+                                            k++;
+                                        }
+
+                                    }else if(caso==3) {
+                                        if(buf[j]==':') {
+                                            if(buf[j+1]!=':') {
+                                                caso=4;
+                                            }else {
+                                                key[l] = buf[j];
+                                                l++;
+                                            }
+                                        }else {
+                                            key[l] = buf[j];
+                                            l++;
+                                        }
+                                    }else if (caso==4) {
+                                        user2[m] = buf[j];
+                                        m++;
+                                    }
+                                }
+                                for (size_t i = 0; i < k-1; ++i) {
+                                    mensaje += password[i];  // Añade cada carácter al string
+                                }
+                                if(base.agregarCorreo(user, password,key,user2)) {
+                                    send(i, "Exito", 5, 0);
+                                }else {
+                                    send(i, "Error", 5, 0);
+                                }
+
+
                             // Agregar el código para manejar el comando 'U'
                             break;
                             default:

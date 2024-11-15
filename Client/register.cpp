@@ -8,10 +8,11 @@
 #include "ui_Register_UI.h"
 
 
-Register::Register(QWidget *parent, Socket *socket) :
+Register::Register(QWidget *parent, Socket *socket, Usuario *usuario) :
     QMainWindow(parent), ui(new Ui::Regiter_UI) {
     ui->setupUi(this);
     this->socket = socket;
+    this->usuario = usuario;
     connect(ui->pushButton_2, &QPushButton::clicked, this, &Register::registerData);
 }
 

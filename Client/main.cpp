@@ -14,12 +14,11 @@
 #include <arpa/inet.h>
 #include <thread>
 
-#include "LogIn.h"
 #include "Socket.h"
 
 using namespace std;
-//#include "LogIn.h"
-#include "register.h"
+#include "LogIn.h"
+//#include "register.h"
 //#include "mainwindow.h"
 //#include "mail.h"
 
@@ -28,9 +27,9 @@ using namespace std;
 
 int main(int argc, char *argv[]){
     Socket sock;
-
+    Usuario usr=Usuario("");
     QApplication a(argc, argv);
-    LogIn_UI w = LogIn_UI(nullptr, &sock);
+    LogIn_UI w = LogIn_UI(nullptr, &sock,&usr);
     w.show();
 
 

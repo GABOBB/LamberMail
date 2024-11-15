@@ -10,7 +10,7 @@
 #include "ui_Register_UI.h"
 #include "Socket.h"
 #include "Encription.h"
-
+#include "Usuario.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -22,9 +22,10 @@ Q_OBJECT
 
 public:
     Socket* socket;
+    Usuario* usuario;
     explicit Register(QWidget *parent = nullptr);
 
-    Register(QWidget *parent, Socket *socket);
+    Register(QWidget *parent, Socket *socket, Usuario* usuario);
 
     ~Register() override;
 

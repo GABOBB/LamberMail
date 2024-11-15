@@ -14,7 +14,8 @@
 #include <netdb.h>
 #include <sys/select.h>
 #include "Base.h"
-
+#include <thread> // Para std::this_thread::sleep_for
+#include <chrono> // Para std::chrono::milliseconds
 class Server {
 public:
     Server();
