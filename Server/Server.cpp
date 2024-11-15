@@ -164,6 +164,7 @@ int Server::startServer() {
                                 login = base.obtenerCredencialesPorCorreo(user);
                                 mensaje= login.first+":"+login.second;
                                 send(i, mensaje.c_str(), mensaje.size(), 0);
+                                std::this_thread::sleep_for(std::chrono::milliseconds(100));
                                 send(i, "Exito", 5, 0);
 
                             // Agregar el código para manejar el comando 'L'

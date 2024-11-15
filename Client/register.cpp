@@ -13,7 +13,15 @@ Register::Register(QWidget *parent, Socket *socket, Usuario *usuario) :
     ui->setupUi(this);
     this->socket = socket;
     this->usuario = usuario;
+    ui->lineEdit_2->setEchoMode(QLineEdit::Password);
+    ui->lineEdit_3->setEchoMode(QLineEdit::Password);
+    ui->pushButton->setText("Show");
+    ui->pushButton_4->setText("Show");
     connect(ui->pushButton_2, &QPushButton::clicked, this, &Register::registerData);
+    connect(ui->pushButton_4, &QPushButton::clicked, this, &Register::toggle);
+    connect(ui->pushButton, &QPushButton::clicked, this, &Register::toggle);
+    connect(ui->pushButton_3, &QPushButton::clicked, this, &Register::closeWindow);
+
 }
 
 Register::~Register() {
@@ -42,6 +50,7 @@ void Register::registerData() {
                     }else {
                         if(socket->lastmsjRcvd == "Exito") {
                             std::cout << "Todo piola "<<std::endl;
+                            closeWindow();
                         }else {
                             std::cout << "Usuario ya existe "<<std::endl;
                         }
@@ -58,4 +67,25 @@ void Register::registerData() {
             std::cout << "Termine el correo con @LamberMail.com "<<std::endl;
         }
     }
+}
+
+void Register::closeWindow() {
+    LogIn_UI *w = new LogIn_UI(nullptr, socket,usuario);
+    w->show();
+    this->close();
+}
+
+void Register::toggle() {
+    if (isPasswordMode) {
+        ui->lineEdit_2->setEchoMode(QLineEdit::Normal); // Mostrar texto
+        ui->lineEdit_3->setEchoMode(QLineEdit::Normal);
+        ui->pushButton_4->setText("Hide");
+        ui->pushButton->setText("Hide");
+    } else {
+        ui->lineEdit_2->setEchoMode(QLineEdit::Password); // Enmascarar texto
+        ui->lineEdit_3->setEchoMode(QLineEdit::Password);
+        ui->pushButton_4->setText("Show");
+        ui->pushButton->setText("Show");
+    }
+    isPasswordMode = !isPasswordMode; // Alternar estado
 }

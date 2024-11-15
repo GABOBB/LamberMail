@@ -25,6 +25,7 @@ public:
     Socket* socket;
     std::string user;
     Usuario* usuario;
+    bool isPasswordMode = true;
     explicit LogIn_UI(QWidget *parent = nullptr);
     LogIn_UI(QWidget *parent, Socket *socket, Usuario *usr);
     ~LogIn_UI() override;
@@ -34,6 +35,8 @@ void login();
 void registerWindow();
 
 void mainwindowOpen();
+
+void toggle();
 
 void prueba();
 

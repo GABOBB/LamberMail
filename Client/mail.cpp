@@ -24,7 +24,9 @@ void mail::send() {
         std::cout<<"Llene todo"<<std::endl;
     }else {
         Encription enc;
-        std::string texto = ui->textEdit->toPlainText().toStdString()+":"+ui->textEdit_3->toPlainText().toStdString();
+        std::string topic = ui->textEdit->toPlainText().toStdString();
+        topic.erase(std::remove(topic.begin(), topic.end(), ':'), topic.end());
+        std::string texto = topic+":"+ui->textEdit_3->toPlainText().toStdString();
         std::pair<std::vector<unsigned char>, std::vector<int>> result =enc.encrypt(texto);
         std::string message(result.first.begin(), result.first.end());
         std::string key="";
@@ -39,6 +41,7 @@ void mail::send() {
             }else {
                 if(socket->lastmsjRcvd == "Exito") {
                     std::cout << "Todo piola "<<std::endl;
+                    this->close();
                 }else {
                     std::cout << "Usuario no existe "<<std::endl;
                 }
@@ -51,3 +54,4 @@ void mail::send() {
 
 
 }
+

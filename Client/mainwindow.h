@@ -5,6 +5,9 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <qlistwidget.h>
+
+#include "mail.h"
 #include <QMainWindow>
 #include "Socket.h"
 #include "Usuario.h"
@@ -23,9 +26,17 @@ public:
     MainWindow(QWidget *parent,  Socket *socket, Usuario* user);
     ~MainWindow() override;
 
-void Update();
+    void Update();
 
-void startUpdateThread();
+    void startUpdateThread();
+
+    void NewMessage() ;
+
+void manejarItemClicado(QListWidgetItem *item);
+
+void realizarAccionConCorreo(int id);
+
+void hideWidget();
 
 private:
     Ui::MainWindow *ui;

@@ -7,6 +7,7 @@
 
 #include <QMainWindow>
 
+#include "LogIn.h"
 #include "ui_Register_UI.h"
 #include "Socket.h"
 #include "Encription.h"
@@ -23,6 +24,7 @@ Q_OBJECT
 public:
     Socket* socket;
     Usuario* usuario;
+    bool isPasswordMode = true;
     explicit Register(QWidget *parent = nullptr);
 
     Register(QWidget *parent, Socket *socket, Usuario* usuario);
@@ -30,6 +32,10 @@ public:
     ~Register() override;
 
 void registerData();
+
+void closeWindow();
+
+void toggle();
 
 private:
     Ui::Regiter_UI *ui;

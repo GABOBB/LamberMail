@@ -13,8 +13,11 @@ LogIn_UI::LogIn_UI(QWidget *parent,Socket *socket,Usuario *usr) :
     ui->setupUi(this);
     this->socket=socket;
     this->usuario= usr;
+    ui->lineEdit_2->setEchoMode(QLineEdit::Password);
+    ui->pushButton->setText("Show");
     connect(ui->pushButton_2,&QPushButton::clicked, this ,&LogIn_UI::mainwindowOpen);
     connect(ui->pushButton_3,&QPushButton::clicked, this,&LogIn_UI::registerWindow);
+    connect(ui->pushButton,&QPushButton::clicked, this,&LogIn_UI::toggle);
 }
 
 LogIn_UI::~LogIn_UI() {
@@ -55,18 +58,23 @@ void LogIn_UI::login() {
                             key+=socket->lastmsjRcvd[j];
                         }
                     }
-
-                    Encription enc;
-                    if(enc.compare(ui->lineEdit_2->text().toStdString(),key,password)) {
-                        std::cout << "Inicio Exitoso" << std::endl;
-                        user=ui->lineEdit->text().toStdString();
+                    if(socket->lastmsjRcvd=="Exito") {
                         socket->lastmsjRcvd  = "";
                         waiting=false;
                     }else {
-                        std::cout << "Inicio Fallido" << std::endl;
-                        socket->lastmsjRcvd  = "";
-                        waiting=false;
+                        Encription enc;
+                        if(enc.compare(ui->lineEdit_2->text().toStdString(),key,password)) {
+                            std::cout << "Inicio Exitoso" << std::endl;
+                            user=ui->lineEdit->text().toStdString();
+                            socket->lastmsjRcvd  = "";
+                        }else {
+                            std::cout << "Inicio Fallido" << std::endl;
+                            socket->lastmsjRcvd  = "";
+                        }
+                        password="";
+                        key="";
                     }
+
 
                 }
             }
@@ -92,4 +100,15 @@ void LogIn_UI::mainwindowOpen() {
         this->close();
     }
 
+}
+
+void LogIn_UI::toggle() {
+    if (isPasswordMode) {
+        ui->lineEdit_2->setEchoMode(QLineEdit::Normal); // Mostrar texto
+        ui->pushButton->setText("Hide");
+    } else {
+        ui->lineEdit_2->setEchoMode(QLineEdit::Password); // Enmascarar texto
+        ui->pushButton->setText("Show");
+    }
+    isPasswordMode = !isPasswordMode; // Alternar estado
 }

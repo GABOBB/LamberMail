@@ -31,6 +31,7 @@ public:
     QLineEdit *lineEdit;
     QLineEdit *lineEdit_2;
     QPushButton *pushButton;
+    QPushButton *pushButton_3;
     QPushButton *pushButton_2;
     QLabel *label_4;
     QPushButton *pushButton_4;
@@ -95,11 +96,15 @@ public:
         lineEdit_2->setStyleSheet(QString::fromUtf8("background-color:rgb(255, 255, 255)"));
         pushButton = new QPushButton(centralwidget);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(690, 360, 31, 27));
+        pushButton->setGeometry(QRect(690, 360, 45, 27));
         pushButton_2 = new QPushButton(centralwidget);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
         pushButton_2->setGeometry(QRect(410, 470, 301, 41));
         pushButton_2->setFont(font1);
+        pushButton_3 = new QPushButton(centralwidget);
+        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
+        pushButton_3->setGeometry(QRect(410, 520, 301, 41));
+        pushButton_3->setFont(font1);
         label_4 = new QLabel(centralwidget);
         label_4->setObjectName(QString::fromUtf8("label_4"));
         label_4->setGeometry(QRect(190, 400, 241, 41));
@@ -107,7 +112,7 @@ public:
         label_4->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         pushButton_4 = new QPushButton(centralwidget);
         pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
-        pushButton_4->setGeometry(QRect(690, 410, 31, 27));
+        pushButton_4->setGeometry(QRect(690, 410, 45, 27));
         lineEdit_3 = new QLineEdit(centralwidget);
         lineEdit_3->setObjectName(QString::fromUtf8("lineEdit_3"));
         lineEdit_3->setGeometry(QRect(440, 410, 251, 27));
@@ -134,6 +139,7 @@ public:
         label_3->setText(QCoreApplication::translate("MainWindow", "Password:", nullptr));
         pushButton->setText(QString());
         pushButton_2->setText(QCoreApplication::translate("MainWindow", "Register", nullptr));
+        pushButton_3->setText(QCoreApplication::translate("MainWindow", "Back to Log In", nullptr));
         label_4->setText(QCoreApplication::translate("MainWindow", "Repeat Password:", nullptr));
         pushButton_4->setText(QString());
     } // retranslateUi

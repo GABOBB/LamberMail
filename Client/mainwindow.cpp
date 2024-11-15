@@ -18,6 +18,10 @@ MainWindow::MainWindow(QWidget *parent, Socket *socket, Usuario *user) :
     this->socket=socket;
     this->user=user;
     QTimer::singleShot(0, this,&MainWindow::startUpdateThread);
+    connect(ui->pushButton,&QPushButton::clicked,this, &MainWindow::NewMessage);
+    connect(ui->pushButton_2,&QPushButton::clicked,this, &MainWindow::Update);
+    connect(ui->pushButton_3,&QPushButton::clicked,this, &MainWindow::hideWidget);
+    ui->widget->hide();
 
 
 
@@ -28,6 +32,7 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::Update() {
+    user->refreshMail();
     socket->sendMessageToServer("U:" + user->getUsuario());
     bool waiting = true;
 
@@ -61,6 +66,7 @@ void MainWindow::Update() {
                 std::string key = "";
                 std::string autor = "";
                 int caso = 1;
+                unsigned char c =0;
 
                 for (int j = 0; j < lastMessage.length(); j++) {
                     if (caso == 1) {
@@ -72,6 +78,7 @@ void MainWindow::Update() {
                             }
                         } else {
                             texto += lastMessage[j];
+
                         }
                     } else if (caso == 2) {
                         if (lastMessage[j] == ':') {
@@ -90,10 +97,26 @@ void MainWindow::Update() {
 
                 Encription enc;
                 auto message = enc.decrypt(texto, key);
-                std::string newMessage(message.begin(), message.end());
+                std::string topic ="";
+                std::string mail = "";
+                caso =1;
+                for (int j = 0; j < message.length(); j++) {
+                    if(caso==1) {
+                        if (message[j] == ':') {
+                            caso=2;
+                        } else {
+                            topic += message[j];
+                        }
+                    } else if (caso == 2) {
+                        mail += message[j];
+                    }
+                }
+
+
 
                 // Agregar el mensaje al usuario
-                user->addCorreo(Correos(autor, newMessage, key));
+                auto send = Correos(autor, topic,mail, key);
+                user->addCorreo(send);
 
                 // Limpiar el mensaje en socket
                 {
@@ -107,15 +130,55 @@ void MainWindow::Update() {
     // Actualizar la interfaz después de recibir los mensajes
     QMetaObject::invokeMethod(this, [this]() {
         ui->listWidget->clear();
-        for (const auto& correo : user->getCorreos()) {
+        const auto& correos = user->getCorreos();
+        for (int i = correos.size() - 1; i >= 0; --i) {
+            const auto& correo = correos[i];
             QString autor = QString::fromStdString(correo.getAutor());
-            QString contenido = QString::fromStdString(correo.getContenido());
-            ui->listWidget->addItem(autor + ": " + contenido);
+            QString contenido = QString::fromStdString(correo.getTopic());
+
+            // Crear un nuevo QListWidgetItem
+            QListWidgetItem* item = new QListWidgetItem(autor + ": " + contenido);
+
+            // Almacenar información adicional en el ítem usando `setData`
+            item->setData(Qt::UserRole, QString::fromStdString(std::to_string(correo.getID())));
+            item->setFlags(item->flags() & ~Qt::ItemIsSelectable);
+
+            // Agregar el ítem al QListWidget
+            ui->listWidget->addItem(item);
         }
+        connect(ui->listWidget, &QListWidget::itemClicked, this, &MainWindow::manejarItemClicado);
     });
+
 }
 void MainWindow::startUpdateThread() {
     // Inicializar y ejecutar el hilo
     std::thread updateThread(&MainWindow::Update, this);
     updateThread.detach();  // Desvincular el hilo para que se ejecute en segundo plano
+}
+
+void MainWindow::NewMessage() {
+    mail *m = new mail(nullptr, socket, user);
+    m->show();
+}
+
+void MainWindow::manejarItemClicado(QListWidgetItem* item) {
+    // Obtener información adicional almacenada en el ítem
+    QString correoID = item->data(Qt::UserRole).toString();
+
+    int id = correoID.toInt();
+    realizarAccionConCorreo(id);
+}
+
+void MainWindow::realizarAccionConCorreo(int id) {
+    ui->label_2->setText(QString::fromStdString(user->getCorreos()[id].getContenido()));
+    ui->listWidget->hide();
+    ui->widget->show();
+    ui->widget->setEnabled(true);
+
+}
+
+void MainWindow::hideWidget() {
+    ui->widget->hide();
+    ui->widget->setEnabled(false);
+    ui->listWidget->show();
 }
