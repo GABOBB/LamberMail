@@ -49,7 +49,7 @@ std::pair<std::vector<unsigned char>, std::vector<int>> Encription::encrypt(std:
     return std::make_pair(encryptedMessage, encryptedKey);
 }
 
-std::vector<unsigned char> Encription::decrypt(std::string mensaje, std::string llave) {
+std::string Encription::decrypt(std::string mensaje, std::string llave) {
     // Crear un vector<unsigned char> y llenar con los caracteres de la cadena
     std::vector<unsigned char> newMensaje(mensaje.begin(), mensaje.end());
     std::vector<int> newKey;
@@ -77,10 +77,17 @@ std::vector<unsigned char> Encription::decrypt(std::string mensaje, std::string 
     // Descifra el mensaje con AES
     std::vector<unsigned char> decryptedMessage = aes.decrypt(newMensaje);
 
-    std::string finalMsj(decryptedMessage.begin(), decryptedMessage.end());
+    std::string finalMsj="";
+    unsigned char c = 0;
+    for (auto byte : decryptedMessage) {
+        if (byte != c) {
+            finalMsj += byte;
+        }
+    }
+
     std::cout << finalMsj << std::endl;
 
-    return decryptedMessage;
+    return finalMsj;
 }
 
 bool Encription::compare(std::string intento, std::string llave, std::string original) {

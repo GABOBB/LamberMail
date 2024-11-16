@@ -53,8 +53,8 @@ bool Base::agregarUsuario(const std::string& correo, const std::string& contrase
 }
 
 // Agrega un correo recibido para el usuario identificado por correo_usuario
-void Base::agregarCorreo(const std::string& correo_usuario, const std::string& texto, const std::string& llave_encriptacion, const std::string& correo_remitente) {
-    if (!conn) return;
+bool Base::agregarCorreo(const std::string& correo_usuario, const std::string& texto, const std::string& llave_encriptacion, const std::string& correo_remitente) {
+    if (!conn) return false;
 
     try {
         sql::PreparedStatement *pstmt = conn->prepareStatement(
@@ -76,20 +76,24 @@ void Base::agregarCorreo(const std::string& correo_usuario, const std::string& t
             pstmt->setString(4, correo_remitente);
             pstmt->execute();
             std::cout << "Correo agregado exitosamente." << std::endl;
+            return true;
         } else {
             std::cout << "Usuario no encontrado con el correo especificado." << std::endl;
+            return false;
         }
 
         delete res;
         delete pstmt;
     } catch (sql::SQLException &e) {
         std::cerr << "Error al agregar correo: " << e.what() << std::endl;
+        return false;
     }
 }
 
 // Muestra todos los correos recibidos para un usuario identificado por correo_usuario
-void Base::mostrarCorreosRecibidos(const std::string& correo_usuario) {
-    if (!conn) return;
+std::vector<std::tuple<std::string,std::string,std::string>> Base::mostrarCorreosRecibidos(const std::string& correo_usuario) {
+    std::vector<std::tuple<std::string,std::string,std::string>> mails = {};
+    if (!conn) return mails;
 
     try {
         sql::PreparedStatement *pstmt = conn->prepareStatement(
@@ -115,17 +119,21 @@ void Base::mostrarCorreosRecibidos(const std::string& correo_usuario) {
                 std::cout << "Correo Remitente: " << correosRes->getString("correo_remitente") << std::endl;
                 std::cout << "Fecha: " << correosRes->getString("fecha") << std::endl;
                 std::cout << "-----------------------------" << std::endl;
+                mails.push_back(std::make_tuple(correosRes->getString("texto"),correosRes->getString("llave_encriptacion"),correosRes->getString("correo_remitente")));
             }
 
             delete correosRes;
         } else {
             std::cout << "Usuario no encontrado con el correo especificado." << std::endl;
+            return mails;
         }
 
         delete res;
         delete pstmt;
+        return mails;
     } catch (sql::SQLException &e) {
         std::cerr << "Error al mostrar correos recibidos: " << e.what() << std::endl;
+        return mails;
     }
 }
 

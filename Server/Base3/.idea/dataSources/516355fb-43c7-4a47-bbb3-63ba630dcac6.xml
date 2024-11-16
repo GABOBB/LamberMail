@@ -1123,7 +1123,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
     <column id="304" parent="299" name="id">
-      <AutoIncrement>5</AutoIncrement>
+      <AutoIncrement>8</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
@@ -1134,9 +1134,8 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <StoredType>int|0s</StoredType>
     </column>
     <column id="306" parent="299" name="texto">
-      <NotNull>1</NotNull>
       <Position>3</Position>
-      <StoredType>text|0s</StoredType>
+      <StoredType>varbinary(255)|0s</StoredType>
     </column>
     <column id="307" parent="299" name="llave_encriptacion">
       <NotNull>1</NotNull>
@@ -1157,14 +1156,14 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <ColNames>correo_id</ColNames>
       <OnDelete>cascade</OnDelete>
       <RefColNames>id</RefColNames>
-      <RefTableName>usuarios</RefTableName>
+      <RefTableName>usuarios2</RefTableName>
     </foreign-key>
     <index id="311" parent="299" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="312" parent="299" name="correo_id">
+    <index id="312" parent="299" name="correos_recibidos_ibfk_1">
       <ColNames>correo_id</ColNames>
       <Type>btree</Type>
     </index>

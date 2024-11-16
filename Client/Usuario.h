@@ -16,12 +16,17 @@ public:
     std::string getUsuario() const;
     std::vector<Correos> getCorreos() const;
 
+    int getTotalCorreos() const;
+
     void setUsuario(const std::string& usuario);
-    void addCorreo(const Correos& correo);
+    void addCorreo( Correos& correo);
+
+    void refreshMail();
 
 private:
     std::string usuario;
     std::vector<Correos> correos;
+    int totalCorreos;
 };
 
 #endif // USUARIO_H

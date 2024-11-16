@@ -59,14 +59,18 @@ void Socket::socketClientFunction() {
             std::cerr << "No se pudo enviar al servidor" << std::endl;
             continue;
         }
+        do {
+            // Recibir la respuesta del servidor
+            memset(buf, 0, 16384);
+            int bytesReceived = recv(sock, buf, 16384, 0);
+            if (bytesReceived > 0) {
+                std::cout << "Servidor: " << std::string(buf, bytesReceived) << std::endl;
+            }
+            lastmsjRcvd = std::string(buf, bytesReceived);
+            if(lastmsjRcvd == "Exito"|| lastmsjRcvd == "Error") {break;}
+        }while(lastmsjRcvd!="");
+        std::cout << "Sali de aqui: " << std::endl;
 
-        // Recibir la respuesta del servidor
-        memset(buf, 0, 16384);
-        int bytesReceived = recv(sock, buf, 16384, 0);
-        if (bytesReceived > 0) {
-            std::cout << "Servidor: " << std::string(buf, bytesReceived) << std::endl;
-        }
-        lastmsjRcvd = std::string(buf, bytesReceived);
     }
 
     close(sock);

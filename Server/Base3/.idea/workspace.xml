@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="611d69ee-5d3c-485b-8229-807144512a78" name="Changes" comment="" />
+    <list default="true" id="611d69ee-5d3c-485b-8229-807144512a78" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../Client/LogIn.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../Client/LogIn.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Client/mainwindow.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../Client/mainwindow.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_localhost_-2024_11_12_20_02_55-dump.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_localhost_-2024_11_13_23_40_38-dump.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../Server.cpp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,9 +21,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2oo98zm3GNzcWWCvZVlYYyGTm3m" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -26,7 +34,8 @@
     "Database Script._localhost_-2024_11_12_20_02_55-dump.sql.executor": "Run",
     "RunOnceActivity.OpenDatabaseViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Base-de-Datos",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "Conexion-Base-Sockets",
     "last_opened_file_path": "/home/gabonm7/CLionProjects/LamberMail/LamberMail/Server/Base3"
   },
   "keyToStringList": {

@@ -22,8 +22,8 @@ public:
 
     // Métodos para manejar los datos de la base de datos
     bool agregarUsuario(const std::string& correo, const std::string& contrasena, const std::string& llave_encriptacion);
-    void agregarCorreo(const std::string& correo_usuario, const std::string& texto, const std::string& llave_encriptacion, const std::string& correo_remitente);
-    void mostrarCorreosRecibidos(const std::string& correo_usuario);
+    bool agregarCorreo(const std::string& correo_usuario, const std::string& texto, const std::string& llave_encriptacion, const std::string& correo_remitente);
+    std::vector<std::tuple<std::string,std::string,std::string>> mostrarCorreosRecibidos(const std::string& correo_usuario);
 
     std::pair<std::string, std::string> obtenerCredencialesPorCorreo(const std::string &correo);
 
