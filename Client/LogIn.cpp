@@ -43,19 +43,19 @@ void LogIn_UI::login() {
                     std::string key = "";
                     int caso=1;
                     int k=0;
-                    for (int j = 0; j < socket->lastmsjRcvd.length()-1; j++) {
+                    for (int j = 0; j < socket->lastmsjRcvd.length(); j++) {
                         if (caso==1) {
                             if(socket->lastmsjRcvd[j]==':') {
                                 if(socket->lastmsjRcvd[j+1]!=':') {
                                     caso=2;
                                 }else {
-                                    password += socket->lastmsjRcvd[j];
+                                    key += socket->lastmsjRcvd[j];
                                 }
                             }else {
-                                password += socket->lastmsjRcvd[j];
+                                key += socket->lastmsjRcvd[j];
                             }
                         }else if (caso==2) {
-                            key+=socket->lastmsjRcvd[j];
+                            password+=socket->lastmsjRcvd[j];
                         }
                     }
                     if(socket->lastmsjRcvd=="Exito") {

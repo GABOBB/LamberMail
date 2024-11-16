@@ -156,13 +156,13 @@ int Server::startServer() {
                             // Agregar el código para manejar el comando 'R'
                             break;
                             case 'L':
-                                for (int j = 2; j < bytesR-1; j++) {
+                                for (int j = 2; j < bytesR; j++) {
                                     if (caso==1) {
                                         user[j-2]=buf[j];
                                     }
                                 }
                                 login = base.obtenerCredencialesPorCorreo(user);
-                                mensaje= login.first+":"+login.second;
+                                mensaje= login.second+":"+login.first;
                                 send(i, mensaje.c_str(), mensaje.size(), 0);
                                 std::this_thread::sleep_for(std::chrono::milliseconds(100));
                                 send(i, "Exito", 5, 0);
@@ -179,7 +179,7 @@ int Server::startServer() {
                                 if (!mails.empty()) {
                                     for (auto item : mails) {
                                         auto [text, key, autor] = item;
-                                        mensaje += text+":"+key+":"+autor;
+                                        mensaje += autor+":"+key+":"+text;
                                         send(i, mensaje.c_str(), mensaje.size(), 0);
                                         mensaje="";
                                         std::this_thread::sleep_for(std::chrono::milliseconds(100));

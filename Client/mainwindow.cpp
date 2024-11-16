@@ -74,10 +74,10 @@ void MainWindow::Update() {
                             if (lastMessage[j + 1] != ':') {
                                 caso = 2;
                             } else {
-                                texto += lastMessage[j];
+                                autor += lastMessage[j];
                             }
                         } else {
-                            texto += lastMessage[j];
+                            autor += lastMessage[j];
 
                         }
                     } else if (caso == 2) {
@@ -91,7 +91,7 @@ void MainWindow::Update() {
                             key += lastMessage[j];
                         }
                     } else if (caso == 3) {
-                        autor += lastMessage[j];
+                        texto += lastMessage[j];
                     }
                 }
 

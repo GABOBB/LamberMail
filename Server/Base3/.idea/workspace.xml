@@ -5,7 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="611d69ee-5d3c-485b-8229-807144512a78" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../Client/LogIn.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../Client/LogIn.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Client/mainwindow.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../Client/mainwindow.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_localhost_-2024_11_12_20_02_55-dump.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_localhost_-2024_11_13_23_40_38-dump.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../Server.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
