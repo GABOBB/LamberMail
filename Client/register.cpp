@@ -42,7 +42,7 @@ void Register::registerData() {
                     key += std::to_string(num)+",";
                 }
 
-                socket->sendMessageToServer("R:" + ui->lineEdit->text().toStdString() + ":" + password + ":" + key);
+                socket->sendMessageToServer("R:" + ui->lineEdit->text().toStdString() + ":" + key + ":" + password);
                 bool waiting = true;
                 while(waiting) {
                     if(socket->lastmsjRcvd=="") {

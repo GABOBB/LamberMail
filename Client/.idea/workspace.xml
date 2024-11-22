@@ -24,12 +24,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce4fed38-ca03-4fcc-ac3b-8ab60d60eb22" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/LogIn.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/LogIn.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mainwindow.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/mainwindow.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server/Base3/.idea/sqldialects.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mail.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/mail.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainwindow.ui" beforeDir="false" afterPath="$PROJECT_DIR$/mainwindow.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/register.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/register.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/Base3/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/Base3/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Server/Base3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/Base3/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server/Base3/_localhost_-2024_11_12_20_02_55-dump.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server/Base3/_localhost_-2024_11_13_23_40_38-dump.sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Server/Server.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/Server.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -763,7 +766,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "Conexion-Base-Sockets",
-    "last_opened_file_path": "/home/yerik/Desktop/Tank_Attack",
+    "last_opened_file_path": "/home/yerik/Desktop/LamberMail/Client",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -773,11 +776,6 @@
   }
 }]]></component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Cliente" type="CMakeRunConfiguration" factoryName="Application" singleton="false" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Cliente" TARGET_NAME="Cliente" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Cliente" RUN_TARGET_NAME="Cliente">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -801,6 +799,7 @@
       <workItem from="1731535097942" duration="11763000" />
       <workItem from="1731550647092" duration="9094000" />
       <workItem from="1731624187553" duration="34765000" />
+      <workItem from="1732309337364" duration="429000" />
     </task>
     <servers />
   </component>

@@ -131,16 +131,16 @@ int Server::startServer() {
                                             if(buf[j+1]!=':') {
                                                 caso=3;
                                             }else {
-                                                password[k] = buf[j];
+                                                key[k] = buf[j];
                                                 k++;
                                             }
                                         }else {
-                                            password[k] = buf[j];
+                                            key[k] = buf[j];
                                             k++;
                                         }
 
                                     }else if(caso==3) {
-                                        key[l] = buf[j];
+                                        password[l] = buf[j];
                                         l++;
 
                                     }
@@ -210,11 +210,11 @@ int Server::startServer() {
                                             if(buf[j+1]!=':') {
                                                 caso=3;
                                             }else {
-                                                password[k] = buf[j];
+                                                user2[k] = buf[j];
                                                 k++;
                                             }
                                         }else {
-                                            password[k] = buf[j];
+                                            user2[k] = buf[j];
                                             k++;
                                         }
 
@@ -231,7 +231,7 @@ int Server::startServer() {
                                             l++;
                                         }
                                     }else if (caso==4) {
-                                        user2[m] = buf[j];
+                                        password[m] = buf[j];
                                         m++;
                                     }
                                 }

@@ -33,7 +33,7 @@ void mail::send() {
         for (int num : result.second) {
             key += std::to_string(num)+",";
         }
-        socket->sendMessageToServer("S:"+ui->textEdit_2->toPlainText().toStdString()+":"+message+":"+key+":"+user->getUsuario());
+        socket->sendMessageToServer("S:"+ui->textEdit_2->toPlainText().toStdString()+":"+user->getUsuario()+":"+key+":"+message);
         bool waiting =true;
         while(waiting) {
             if(socket->lastmsjRcvd=="") {
